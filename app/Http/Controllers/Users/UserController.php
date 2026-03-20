@@ -143,6 +143,7 @@ class UserController extends Controller
         }]);
 
         $stats = [
+            'total_logins' => $user->activityLogs()->where('action', 'login')->count(),
             'total_activities' => $user->activityLogs()->count(),
             'activities_this_week' => $user->activityLogs()->where('created_at', '>', now()->subDays(7))->count(),
             'activities_this_month' => $user->activityLogs()->whereMonth('created_at', now()->month)->count(),
@@ -363,5 +364,17 @@ class UserController extends Controller
             'never_logged_in' => User::whereNull('last_login_at')->count(),
             'recently_active' => User::where('last_login_at', '>', now()->subDays(7))->count(),
         ];
+    }
+
+    private function calculateLoginFrequency(User $user)
+    {
+        $loginCount = $user->activityLogs()->where('action', 'login')->count();
+        $daysSinceCreation = $user->created_at->diffInDays(now());
+        
+        if ($daysSinceCreation == 0) {
+            return 0;
+        }
+        
+        return round($loginCount / ($daysSinceCreation / 7), 1); // Logins per week
     }
 }
