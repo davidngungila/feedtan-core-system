@@ -365,16 +365,4 @@ class UserController extends Controller
             'recently_active' => User::where('last_login_at', '>', now()->subDays(7))->count(),
         ];
     }
-
-    private function calculateLoginFrequency(User $user)
-    {
-        $loginCount = $user->activityLogs()->where('action', 'login')->count();
-        $daysSinceCreation = $user->created_at->diffInDays(now());
-        
-        if ($daysSinceCreation == 0) {
-            return 0;
-        }
-        
-        return round($loginCount / ($daysSinceCreation / 7), 1); // Logins per week
-    }
 }
