@@ -99,6 +99,23 @@ Route::prefix('accounting')->name('accounting.')->middleware(['auth', 'role:supe
     Route::get('/reconciliation', [\App\Http\Controllers\Accounting\AccountingController::class, 'reconciliation'])->name('reconciliation');
 });
 
+// Profile Routes
+Route::prefix('profile')->name('profile.')->middleware(['auth'])->group(function () {
+    Route::get('/', [\App\Http\Controllers\ProfileController::class, 'show'])->name('show');
+    Route::get('/settings', [\App\Http\Controllers\ProfileController::class, 'settings'])->name('settings');
+    Route::get('/personal-info', [\App\Http\Controllers\ProfileController::class, 'personalInfo'])->name('personal-info');
+    Route::get('/change-password', [\App\Http\Controllers\ProfileController::class, 'changePasswordPage'])->name('change-password-page');
+    Route::get('/two-factor', [\App\Http\Controllers\ProfileController::class, 'twoFactorPage'])->name('two-factor-page');
+    Route::get('/backup-codes', [\App\Http\Controllers\ProfileController::class, 'backupCodesPage'])->name('backup-codes-page');
+    Route::get('/password-expired', [\App\Http\Controllers\ProfileController::class, 'passwordExpired'])->name('password-expired');
+    Route::post('/update', [\App\Http\Controllers\ProfileController::class, 'update'])->name('update');
+    Route::post('/change-password', [\App\Http\Controllers\ProfileController::class, 'changePassword'])->name('change-password');
+    Route::post('/enable-2fa', [\App\Http\Controllers\ProfileController::class, 'enable2FA'])->name('enable-2fa');
+    Route::post('/disable-2fa', [\App\Http\Controllers\ProfileController::class, 'disable2FA'])->name('disable-2fa');
+    Route::post('/generate-backup-codes', [\App\Http\Controllers\ProfileController::class, 'generateBackupCodes'])->name('generate-backup-codes');
+    Route::get('/2fa-setup', [\App\Http\Controllers\ProfileController::class, 'twoFactorSetup'])->name('2fa-setup');
+});
+
 // User & Role Management Routes
 Route::prefix('users')->name('users.')->middleware(['auth', 'role:super-admin'])->group(function () {
     Route::get('/', [\App\Http\Controllers\Users\UserController::class, 'index'])->name('index');

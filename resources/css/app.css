@@ -8,29 +8,19 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Manrope', 'Lato', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
-    --font-mono: 'Iosevka Charon', 'Courier New', monospace;
-    --font-display: 'MonteCarlo', 'Lato', cursive;
+    --font-sans: 'Rubik', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+    --font-mono: 'Rubik', 'Courier New', monospace;
+    --font-display: 'Rubik', cursive;
 }
 
 /* Custom CSS for Loan Management System */
 
 /* Color Variables */
 :root {
-    --primary-yellow: #eab308;
-    --primary-yellow-dark: #ca8a04;
-    --primary-yellow-light: #fde047;
-}
-
-/* Font Imports using local fonts */
-@font-face {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 100 900;
-    font-display: swap;
-    src: url('./fonts/Inter-Variable.ttf') format('truetype-variations'),
-         url('./fonts/Inter-Variable.woff2') format('woff2-variations'),
-         url('./fonts/Inter-Variable.woff') format('woff-variations');
+    --primary-green: #166534;
+    --primary-green-dark: #14532d;
+    --primary-green-light: #22c55e;
+    --accent-green: #15803d;
 }
 
 /* Base Styles */
@@ -63,28 +53,34 @@ code, pre, .font-mono {
     font-family: var(--font-mono);
 }
 
-/* Ensure black text on yellow backgrounds */
-.bg-yellow-400,
-.bg-yellow-500,
-.from-yellow-400,
-.from-yellow-500,
-.to-yellow-400,
-.to-yellow-500 {
-    color: #000000 !important;
+/* Ensure white text on green backgrounds */
+.bg-green-700,
+.bg-green-800,
+.bg-green-900,
+.from-green-700,
+.from-green-800,
+.from-green-900,
+.to-green-700,
+.to-green-800,
+.to-green-900 {
+    color: #ffffff !important;
 }
 
-.bg-yellow-400 *,
-.bg-yellow-500 *,
-.from-yellow-400 *,
-.from-yellow-500 *,
-.to-yellow-400 *,
-.to-yellow-500 * {
+.bg-green-700 *,
+.bg-green-800 *,
+.bg-green-900 *,
+.from-green-700 *,
+.from-green-800 *,
+.from-green-900 *,
+.to-green-700 *,
+.to-green-800 *,
+.to-green-900 * {
     color: inherit !important;
 }
 
 /* Specific sidebar text colors */
 aside.bg-gradient-to-b .text-white {
-    color: #000000 !important;
+    color: #ffffff !important;
 }
 
 aside.bg-gradient-to-b h1,
@@ -93,7 +89,7 @@ aside.bg-gradient-to-b h3,
 aside.bg-gradient-to-b p,
 aside.bg-gradient-to-b span,
 aside.bg-gradient-to-b div {
-    color: #000000 !important;
+    color: #ffffff !important;
 }
 
 .sidebar-item {
@@ -126,13 +122,13 @@ aside.bg-gradient-to-b div {
 
 /* Button Styles */
 .btn-primary {
-    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    background: linear-gradient(135deg, #166534 0%, #14532d 100%);
     transition: all 0.2s ease;
 }
 
 .btn-primary:hover {
     transform: translateY(-1px);
-    box-shadow: 0 8px 20px rgba(251, 191, 36, 0.3);
+    box-shadow: 0 8px 20px rgba(22, 101, 52, 0.3);
 }
 
 /* Form Styles */
@@ -142,12 +138,12 @@ aside.bg-gradient-to-b div {
 
 .form-input:focus {
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(251, 191, 36, 0.15);
+    box-shadow: 0 4px 12px rgba(22, 101, 52, 0.15);
 }
 
 /* Table Styles */
 .table-row:hover {
-    background-color: #fef3c7;
+    background-color: #dcfce7;
 }
 
 /* Status Badge Styles */
@@ -167,7 +163,7 @@ aside.bg-gradient-to-b div {
 /* Loading Animation */
 .loading-spinner {
     border: 3px solid #f3f3f3;
-    border-top: 3px solid #f59e0b;
+    border-top: 3px solid #166534;
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -294,7 +290,7 @@ aside.bg-gradient-to-b div {
 
 /* Focus Styles for Accessibility */
 .focus-visible:focus {
-    outline: 2px solid #f59e0b;
+    outline: 2px solid #166534;
     outline-offset: 2px;
 }
 

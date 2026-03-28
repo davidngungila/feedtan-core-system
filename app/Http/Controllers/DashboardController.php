@@ -44,7 +44,11 @@ class DashboardController extends Controller
             'total_users' => User::count(),
             'active_users' => User::where('is_active', true)->count(),
             'total_branches' => \App\Models\Branch::count(),
-            'system_health' => 'Good',
+            'total_roles' => \App\Models\Role::count(),
+            'user_growth' => $this->getUserGrowth(),
+            'branch_performance' => $this->getBranchPerformance(),
+            'role_distribution' => $this->getRoleDistribution(),
+            'system_health' => $this->getSystemHealth(),
             'recent_activities' => ActivityLog::with('user')->latest()->limit(10)->get(),
         ];
 
@@ -109,11 +113,21 @@ class DashboardController extends Controller
      */
     private function getUserGrowth()
     {
+        $thisMonth = User::whereMonth('created_at', now()->month)->count();
+        $lastMonth = User::whereMonth('created_at', now()->subMonth()->month)->count();
+        $thisYear = User::whereYear('created_at', now()->year)->count();
+        $lastYear = User::whereYear('created_at', now()->subYear()->year)->count();
+        
+        $yoyGrowth = $lastYear > 0 
+            ? round((($thisYear - $lastYear) / $lastYear) * 100, 1) 
+            : 0;
+        
         return [
-            'this_month' => User::whereMonth('created_at', now()->month)->count(),
-            'last_month' => User::whereMonth('created_at', now()->subMonth()->month)->count(),
-            'this_year' => User::whereYear('created_at', now()->year)->count(),
-            'last_year' => User::whereYear('created_at', now()->subYear()->year)->count(),
+            'this_month' => $thisMonth,
+            'last_month' => $lastMonth,
+            'this_year' => $thisYear,
+            'last_year' => $lastYear,
+            'yoy_growth' => $yoyGrowth,
         ];
     }
 

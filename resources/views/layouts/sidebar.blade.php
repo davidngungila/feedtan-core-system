@@ -5,19 +5,12 @@
 @endphp
 
 <!-- Sidebar -->
-<aside class="fixed left-0 top-0 h-screen w-64 bg-gradient-to-b from-yellow-400 to-yellow-500 text-white shadow-xl z-40 flex flex-col">
+<aside class="fixed left-0 top-0 h-screen w-64 bg-gradient-to-b from-green-800 to-green-900 text-white shadow-xl z-40 flex flex-col">
     <!-- Logo -->
-    <div class="p-6 border-b border-yellow-600 flex-shrink-0">
-        <div class="flex items-center space-x-3">
-            <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
-                <svg class="w-6 h-6 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"/>
-                    <path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd"/>
-                </svg>
-            </div>
-            <div>
-                <h1 class="text-2xl font-black text-white logo-text">LoanIQ Pro</h1>
-                <p class="text-xs text-yellow-100">{{ $highestRole->name ?? 'User' }}</p>
+    <div class="p-6 border-b border-green-700 flex-shrink-0">
+        <div class="flex justify-center">
+            <div class="w-16 h-16 bg-white rounded-lg flex items-center justify-center">
+                <img src="/feedtan_logo.png" alt="FEEDTAN DIGITAL" class="w-12 h-12">
             </div>
         </div>
     </div>
@@ -40,7 +33,7 @@
                                 }
                             }
                         @endphp
-                        <button class="w-full flex items-center justify-between px-4 py-3 text-left rounded-lg {{ $hasActiveChild ? 'bg-yellow-600' : 'hover:bg-yellow-600' }} transition-colors duration-200 dropdown-toggle" onclick="toggleDropdown(this)">
+                        <button class="w-full flex items-center justify-between px-4 py-3 text-left rounded-lg {{ $hasActiveChild ? 'bg-green-700' : 'hover:bg-green-700' }} transition-colors duration-200 dropdown-toggle" onclick="toggleDropdown(this)">
                             <div class="flex items-center space-x-3">
                                 @if($item['icon'])
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -59,11 +52,11 @@
                                     @php
                                         $isActive = request()->routeIs($child['route']);
                                     @endphp
-                                    <a href="{{ route($child['route']) }}" class="block pl-12 pr-4 py-3 text-sm {{ $isActive ? 'bg-yellow-600 bg-opacity-50 text-white' : 'text-black hover:bg-yellow-600 hover:bg-opacity-50' }} rounded transition-colors duration-200">
+                                    <a href="{{ route($child['route']) }}" class="block pl-12 pr-4 py-3 text-sm {{ $isActive ? 'bg-green-700 bg-opacity-50 text-white' : 'text-white hover:bg-green-700 hover:bg-opacity-50' }} rounded transition-colors duration-200">
                                         {{ $child['title'] }}
                                     </a>
                                 @else
-                                    <span class="block pl-12 pr-4 py-3 text-sm text-black opacity-60 cursor-not-allowed">
+                                    <span class="block pl-12 pr-4 py-3 text-sm text-white opacity-60 cursor-not-allowed">
                                         {{ $child['title'] }} (Coming Soon)
                                     </span>
                                 @endif
@@ -76,7 +69,7 @@
                         @php
                             $isActive = request()->routeIs($item['route']);
                         @endphp
-                        <a href="{{ route($item['route']) }}" class="flex items-center space-x-3 px-4 py-3 rounded-lg {{ $isActive ? 'bg-yellow-600' : 'hover:bg-yellow-600' }} transition-colors duration-200">
+                        <a href="{{ route($item['route']) }}" class="flex items-center space-x-3 px-4 py-3 rounded-lg {{ $isActive ? 'bg-green-700' : 'hover:bg-green-700' }} transition-colors duration-200">
                             @if($item['icon'])
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <x-lucide-icon name="{{ $item['icon'] }}" />
